@@ -1,3 +1,4 @@
+from calendar import c
 from cmath import pi
 from doctest import OutputChecker
 from flask import Flask, request
@@ -26,6 +27,26 @@ def lista_estudiante():
                 'segundo_nombre': fila[4]
             })
     return json.dumps(sorted(lista, key=lambda x: x['cedula']))
+
+
+@app.route('/lista_estudiante/<cedula>')
+def lista_estudiante_cedula(cedula):
+    with  open('datos\estudiante.csv') as archivo:
+        reader = csv.reader(archivo)
+        next(reader)
+        lista = []
+        for fila in reader:
+            if fila[0] == cedula:
+                lista.append({
+                    'cedula': fila[0],
+                    'primer_apellido': fila[1],
+                    'segundo_apellido': fila[2],
+                    'primer_nombre': fila[3],
+                    'segundo_nombre': fila[4]
+                })
+
+    return json.dumps(lista)
+
 
 
 @app.route('/registro_asistencia', methods=['POST'])
