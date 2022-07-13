@@ -1,2 +1,6 @@
 # BORIS QUIZHPE ROMERO
-ista-python-curso-2022
+
+carrera: Desarrollo de software
+curso: Matutino quinto b
+
+

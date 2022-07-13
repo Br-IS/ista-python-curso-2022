@@ -9,8 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Hello, World!'
-
+    return "Hello, World!"
 
 @app.route('/lista_estudiante')
 def lista_estudiante():
@@ -52,9 +51,9 @@ def lista_estudiante_cedula(cedula):
 @app.route('/registro_asistencia', methods=['POST'])
 def registro_asistencia():
     
-    with open('datos\sistencia.csv', 'a' , newline='') as archivo:
-        escritor = csv.writer(archivo,delimiter=',', quotechar='' , quoting=csv.QUOTE_NONE, escapechar=' ')
-        escritor.writerow([request.json['cedula'] + ',' +  request.json['materia'] + ','+ request.json['fecha_anio']+','+request.json['fecha_mes']+','+request.json['fecha_dia']])
+    with open('datos\datos_asistencia.csv', 'a' , newline='') as archivo:
+        escritor = csv.writer(archivo,delimiter=',')
+        escritor.writerow([request.json['cedula'],request.json['materia'],request.json['fecha_anio'],request.json['fecha_mes'],request.json['fecha_dia']])
     return 'Registro exitoso'
 
 if __name__ == '__main__':
