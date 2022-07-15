@@ -25,7 +25,7 @@ def lista_estudiante():
                 'primer_nombre': fila[3],
                 'segundo_nombre': fila[4]
             })
-    return json.dumps(sorted(lista, key=lambda x: x['cedula']))
+    return json.dumps(sorted(lista, key=lambda x: x['primer_nombre'] + x['primer_apellido'] ))
 
 
 @app.route('/lista_estudiante/<cedula>')
